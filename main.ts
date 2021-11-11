@@ -1,8 +1,19 @@
 input.onPinPressed(TouchPin.P0, function () {
-    score += 1
-    basic.showIcon(IconNames.Happy)
-    soundExpression.happy.play()
-    basic.showNumber(score)
+    if (score < 10) {
+        score += 1
+        basic.showIcon(IconNames.Happy)
+        soundExpression.happy.play()
+        basic.showNumber(score)
+    } else {
+        basic.showLeds(`
+            . . . . .
+            . # . # .
+            . . . . .
+            . # # # .
+            # . . . #
+            `)
+        soundExpression.twinkle.playUntilDone()
+    }
 })
 input.onButtonPressed(Button.B, function () {
     score = 0
